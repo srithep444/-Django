@@ -23,5 +23,5 @@ def delete(request, id=None):
     return HttpResponseRedirect(reverse('todo:index'))
 
 def random(request):
-    post = post.random()
+    post = Post.objects.order_by("?").first()
     return HttpResponseRedirect(reverse('todo:index'))

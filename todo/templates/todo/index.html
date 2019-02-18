@@ -17,7 +17,7 @@
         <!-- Add Button -->
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
-                <button type="submit" class="btn btn-default">
+                <button type="submit" class="btn btn-default"  style ="background-color:Red;">
                     <i class="fa fa-plus"></i> เพิ่ม
                 </button>
             </div>
@@ -25,10 +25,41 @@
 
     </form>
     <!-- Random -->
-    <form action="{% url 'todo:random'%}" method="post" >
-    <h3>กินอะไรดี<h3> <div>{{ post.body }}</div>
-    <button>สุ่มอาหาร</button>
-    </form>
+    <h3>กินอะไรดี<h3>
+    <button onclick="random()" style ="background-color:Red;" >สุ่มอาหาร</button>
+    <button onclick="color()" style ="background-color:Red;">เปลี่ยนสีพื้นหลัง</button>
+
+        <SCRIPT LANGUAGE="JAVASCRIPT">
+        <!-- 
+        
+        var r_text = new Array (); 
+        r_text[0] = "ข้าวผัด"; 
+        r_text[1] = "ผัดกะเพรา"; 
+        r_text[2] = "ผัดเครื่องแกง"; 
+        r_text[3] = "ต้มยำ"; 
+        r_text[4] = "ชาบู"; 
+        r_text[5] = "ข้าวมันไก่"; 
+        r_text[6] = "สเต็ก";
+        
+        var i = Math.floor(r_text.length * Math.random()); 
+        
+        document.write("<center><FONT SIZE=72><FONT COLOR='#FFFFFF'>" + 
+        r_text[i]  + "</FONT></center><br />"); 
+        
+        var bgcolorlist=new Array("#228B22", "#FFD700", "#ADFF2F", "#FF69B4", "#CD5C5C", "#4B0082", "#7CFC00", "#ADD8E6", "#E84643", "#ED0A07", "#EA2907", "#E5294B", "#E00D26", "#FF3030", "#FC7500", "#F95700", "#F43900", "#F95620") 
+        
+        function random() {
+            i = Math.floor(r_text.length * Math.random());
+            document.write("<center><FONT SIZE=72><FONT COLOR='#FFFFFF'>" + r_text[i]  + "</FONT></center><br />"); 
+           document.body.style.background=bgcolorlist[Math.floor(Math.random()*bgcolorlist.length)]; 
+        }
+        
+        function color() {
+           document.body.style.background=bgcolorlist[Math.floor(Math.random()*bgcolorlist.length)]; 
+        }
+        
+        </script>
+    
     <!-- List -->
     <h2>List</h2>
     <table class="table table-striped todo-table">
@@ -42,7 +73,7 @@
                     <td>
                         <form action="{% url 'todo:delete' post.id %}" method="post">
                             {% csrf_token %}
-                            <button>ลบ</button>
+                            <button style ="background-color:Red;">ลบ</button>
                         </form>
                     </td>
                 </tr>
