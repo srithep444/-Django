@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from .models import Post
 from .forms import PostForm
+from random import *
 
 # Create your views here.
 def index(request):
@@ -19,4 +20,8 @@ def create(request):
 def delete(request, id=None):
     post = get_object_or_404(Post, pk=id)
     post.delete()
+    return HttpResponseRedirect(reverse('todo:index'))
+
+def random(request):
+    post = post.random()
     return HttpResponseRedirect(reverse('todo:index'))

@@ -1,49 +1,48 @@
 {% extends 'todo/base.html' %}
 
 {% block content %}
-    <h1>Todo List</h1>
+    <h1>Food random</h1>
 
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <form action="{% url 'todo:create' %}" method="post">
         {% csrf_token %}
-        <!-- Todo Name -->
+        <!-- Food Name -->
         <div class="form-group">
-            <label for="todo" class="col-sm-3 control-label">Todo</label>
+            <label for="todo" class="col-sm-3 control-label">เพิ่มอาหาร</label>
             <div class="col-sm-6">
                 {{ form.body }}
             </div>
         </div>
 
-        <!-- Add Todo Button -->
+        <!-- Add Button -->
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
                 <button type="submit" class="btn btn-default">
-                    <i class="fa fa-plus"></i> Add Todo
+                    <i class="fa fa-plus"></i> เพิ่ม
                 </button>
             </div>
         </div>
 
     </form>
-    
-
-    <!-- Current Todos -->
-    <h2>Current Todos</h2>
+    <!-- Random -->
+    <form action="{% url 'todo:random'%}" method="post" >
+    <h3>กินอะไรดี<h3> <div>{{ post.body }}</div>
+    <button>สุ่มอาหาร</button>
+    </form>
+    <!-- List -->
+    <h2>List</h2>
     <table class="table table-striped todo-table">
-        <thead>
-            <th>Todos</th><th>&nbsp;</th>
-        </thead>
 
         <tbody>
             {% for post in posts %}
                 <tr>
-                    <!-- Todo Name -->
                     <td>
                         <div>{{ post.body }}</div>
                     </td>
                     <td>
                         <form action="{% url 'todo:delete' post.id %}" method="post">
                             {% csrf_token %}
-                            <button>Delete</button>
+                            <button>ลบ</button>
                         </form>
                     </td>
                 </tr>
